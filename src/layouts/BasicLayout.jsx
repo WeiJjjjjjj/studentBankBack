@@ -13,6 +13,7 @@ import Authorized from '@/utils/Authorized';
 import RightContent from '@/components/GlobalHeader/RightContent';
 import { isAntDesignPro, getAuthorityFromRouter } from '@/utils/utils';
 import logo from '../assets/logo.svg';
+import getAuthoritys from '../utils/menu'
 
 // const [menuData, setMenuData] = useState([]);
 
@@ -111,195 +112,409 @@ const BasicLayout = props => {
     }
   }, []);
 
+  const getAuthority = getAuthoritys
+
+  const authArr= [10102,20503, 20607,60305, 50203,1,2,3,4,5,6]
+  const menuData = [
+    {
+      path: '/',
+      redirect: '/welcome',
+    },
+    {
+      path: '/welcome',
+      name: 'welcome',
+      icon: 'smile',
+      component: './Welcome',
+    },
+    {
+      path: '/systemmanager',
+      name: 'manager',
+      icon: 'crown',
+      // component: './manager',
+      // authority: ['admin'],
+      hideInMenu: JSON.parse(JSON.stringify(getAuthority('/systemmanager',authArr))) ,
+      // hideInMenu: true,
+      routes: [
+        {
+          path: '/systemmanager/rolemanager',
+          name: 'role',
+          icon: 'smile',
+          component: './SystemManager/RoleManager',
+          hideInMenu: JSON.parse(JSON.stringify(getAuthority('/systemmanager/rolemanager',authArr))),
+          // authority: ['admin'],
+        },
+        {
+          path: '/systemmanager/usermanager',
+          name: 'usermanager',
+          icon: 'smile',
+          component: './SystemManager/UserManager',
+          hideInMenu: getAuthority('/systemmanager/usermanager',authArr),
+          // authority: ['admin'],
+        }
+      ],
+    },
+    {
+      path: '/schoolmanager',
+      name: 'schoolmanager',
+      icon: 'crown',
+      hideInMenu: getAuthority('/schoolmanager',authArr),
+      // component: './manager',
+      // authority: ['admin'],
+      routes: [
+        {
+          path: '/schoolmanager/classmanager',
+          name: 'classmanager',
+          icon: 'smile',
+          component: './SchoolManager/ClassManager',
+          hideInMenu: getAuthority('/schoolmanager/classmanager',authArr),
+          // authority: ['admin'],
+        },
+        {
+          path: '/schoolmanager/grademanager',
+          name: 'grademanager',
+          icon: 'smile',
+          component: './SchoolManager/GradeManager',
+          hideInMenu: getAuthority('/schoolmanager/grademanager',authArr),
+          // authority: ['admin'],
+        }
+        ,
+        {
+          path: '/schoolmanager/studentmanager',
+          name: 'studentmanager',
+          icon: 'smile',
+          component: './SchoolManager/StudentManager',
+          hideInMenu: getAuthority('/schoolmanager/studentmanager',authArr),
+          
+          // authority: ['admin'],
+        },
+        {
+          path: '/schoolmanager/teachermanager',
+          name: 'teachermanager',
+          icon: 'smile',
+          component: './SchoolManager/TeacherManager',
+          hideInMenu: getAuthority('/schoolmanager/teachermanager',authArr),
+          // authority: ['admin'],
+        },
+        {
+          path: '/schoolmanager/commentmanager',
+          name: 'commentmanager',
+          icon: 'smile',
+          component: './SchoolManager/CommentManager',
+          hideInMenu: getAuthority('/schoolmanager/commentmanager',authArr),
+          // authority: ['admin'],
+        },
+        {
+          path: '/schoolmanager/subjectmanager',
+          name: 'subjectmanager',
+          icon: 'smile',
+          component: './SchoolManager/SubjectManager',
+          hideInMenu: getAuthority('/schoolmanager/subjectmanager',authArr),
+          // authority: ['admin'],
+        }
+      ],
+    },
+    {
+      path: '/searchmanager',
+      name: 'searchmanager',
+      icon: 'crown',
+      hideInMenu: getAuthority('/searchmanager',authArr),
+      // component: './manager',
+      // authority: ['admin'],
+      routes: [
+        {
+          path: '/searchmanager/flowersearch',
+          name: 'flowersearch',
+          icon: 'smile',
+          component: './SearchManager/FlowerSearch',
+          hideInMenu: getAuthority('/searchmanager/flowersearch',authArr),
+          // authority: ['admin'],
+        },
+        {
+          path: '/searchmanager/classsearch',
+          name: 'classsearch',
+          icon: 'smile',
+          component: './SearchManager/ClassSearch',
+          hideInMenu: getAuthority('/searchmanager/classsearch',authArr),
+          // authority: ['admin'],
+        }
+        ,
+        {
+          path: '/searchmanager/withdrawsearch',
+          name: 'withdrawsearch',
+          icon: 'smile',
+          component: './SearchManager/WithdrawSearch',
+          hideInMenu: getAuthority('/searchmanager/withdrawsearch',authArr),
+          // authority: ['admin'],
+        },
+        {
+          path: '/searchmanager/transfersearch',
+          name: 'transfersearch',
+          icon: 'smile',
+          component: './SearchManager/TransferSearch',
+          hideInMenu: getAuthority('/searchmanager/transfersearch',authArr),
+          // authority: ['admin'],
+        },
+        {
+          path: '/searchmanager/consumptionsearch',
+          name: 'consumptionsearch',
+          icon: 'smile',
+          component: './SearchManager/ConsumptionSearch',
+          hideInMenu: getAuthority('/searchmanager/consumptionsearch',authArr),
+          // authority: ['admin'],
+        },
+        {
+          path: '/searchmanager/studentsearch',
+          name: 'studentQR',
+          icon: 'smile',
+          component: './SearchManager/StudentQR',
+          hideInMenu: getAuthority('/searchmanager/studentsearch',authArr),
+          // authority: ['admin'],
+        },
+        {
+          path: '/searchmanager/teachersearch',
+          name: 'teacherQR',
+          icon: 'smile',
+          component: './SearchManager/TeacherQR',
+          hideInMenu: getAuthority('/searchmanager/teachersearch',authArr),
+          // authority: ['admin'],
+        },
+        {
+          path: '/searchmanager/checkbooksearch',
+          name: 'checkbooksearch',
+          icon: 'smile',
+          component: './SearchManager/CheckbookSearch',
+          hideInMenu: getAuthority('/searchmanager/checkbooksearch',authArr),
+          // authority: ['admin'],
+        }
+      ],
+    },
+    {
+      path: '/QRmanager',
+      name: 'QRmanager',
+      icon: 'crown',
+      hideInMenu: getAuthority('/QRmanager',authArr),
+      // component: './manager',
+      // authority: ['admin'],
+      routes: [
+        {
+          path: '/QRmanager/QRCreate',
+          name: 'QRCreate',
+          icon: 'smile',
+          component: './QRManager/QRCreate',
+          hideInMenu: getAuthority('/QRmanager/QRCreate',authArr),
+          // authority: ['admin'],
+        },
+        {
+          path: '/QRmanager/QRDistribution',
+          name: 'QRDistribution',
+          icon: 'smile',
+          component: './QRManager/QRDistribution',
+          hideInMenu: getAuthority('/QRmanager/QRDistribution',authArr),
+          // authority: ['admin'],
+        }
+      ],
+    },
+    {
+      path: '/shopmanager',
+      name: 'shopmanager',
+      icon: 'crown',
+      hideInMenu: getAuthority('/shopmanager',authArr),
+      // component: './manager',
+      // authority: ['admin'],
+      routes: [
+        {
+          path: '/shopmanager/bankmanager',
+          name: 'bankmanager',
+          icon: 'smile',
+          component: './ShopManager/BankManager',
+          hideInMenu: getAuthority('/shopmanager/bankmanager',authArr),
+          // authority: ['admin'],
+        },
+        {
+          path: '/shopmanager/shoppermanager',
+          name: 'shoppermanager',
+          icon: 'smile',
+          component: './ShopManager/ShopperManager',
+          hideInMenu: getAuthority('/shopmanager/shoppermanager',authArr),
+          // authority: ['admin'],
+        },
+        {
+          path: '/shopmanager/goodsmanager',
+          name: 'goodsmanager',
+          icon: 'smile',
+          component: './ShopManager/GoodsManager',
+          hideInMenu: getAuthority('/shopmanager/goodsmanager',authArr),
+          // authority: ['admin'],
+        }
+      ],
+    },
+    {
+      path: '/logmanager',
+      name: 'logmanager',
+      icon: 'crown',
+      hideInMenu: getAuthority('/logmanager',authArr),
+      // component: './manager',
+      // authority: ['admin'],
+      routes: [
+        {
+          path: '/logmanager/backlog',
+          name: 'backlog',
+          icon: 'smile',
+          component: './LogManager/BackLog',
+          hideInMenu: getAuthority('/logmanager/backlog',authArr),
+          // authority: ['admin'],
+        },
+        {
+          path: '/logmanager/banklog',
+          name: 'banklog',
+          icon: 'smile',
+          component: './LogManager/BankLog',
+          hideInMenu: getAuthority('/logmanager/banklog',authArr),
+          // authority: ['admin'],
+        },
+        {
+          path: '/logmanager/shoplog',
+          name: 'shoplog',
+          icon: 'smile',
+          component: './LogManager/ShopLog',
+          hideInMenu: getAuthority('/logmanager/shoplog',authArr),
+          // authority: ['admin'],
+        },
+        // {
+        //   path: '/logmanager/logsearch',
+        //   name: 'logsearch',
+        //   icon: 'smile',
+        //   component: './LogManager/LogSearch',
+        //   hideInMenu: getAuthority('/logmanager/logsearch',authArr),
+        //   // authority: ['admin'],
+        // }
+      ],
+    },
+    {
+      component: './404',
+    },
+  ]
+
 // 动态路由  在生命周期创建成功后可以利用model发送ajax请求数据
-const menuData = [
-  // {
-  //   path: '/user',
-  //   component: '../layouts/UserLayout',
-  //   routes: [
-  //     {
-  //       name: 'login',
-  //       path: '/user/login',
-  //       component: './user/login',
-  //     },
-  //   ],
-  // },
-  // {
-  //   path:'/login',
-  //   name:'login',
-  //   component:'./Login',
-  //   icon:'smile'
-  // },
-  // // {
-  //   path: '/',
-  //   name:'denglu',
-  //   component: '../layouts/SecurityLayout',
-    // routes: [
-      // {
-      //   path: '/',
-      //   component: '../layouts/BasicLayout',
-      //   // authority: ['admin', 'user'],
-      //   name:'login',
-        // routes: [
-          {
-            path: '/',
-            redirect: '/welcome',
-          },
-          {
-            path: '/welcome',
-            name: 'welcome',
-            icon: 'smile',
-            component: './Welcome',
-          },
-          {
-            path: '/admin',
-            name: 'admin',
-            icon: 'crown',
-            component: './Admin',
-            // authority: ['admin'],
-            routes: [
-              {
-                path: '/admin/sub-page',
-                name: 'sub-page',
-                icon: 'smile',
-                component: './Welcome',
-                // authority: ['admin'],
-              },
-            ],
-          },
-          {
-            path: '/manager',
-            name: 'manager',
-            icon: 'crown',
-            // component: './manager',
-            // authority: ['admin'],
-            routes: [
-              {
-                path: '/manager/rolemanager',
-                name: 'role',
-                icon: 'smile',
-                component: './manager/roleManager',
-                // authority: ['admin'],
-              },
-              {
-                path: '/manager/usermanager',
-                name: 'usermanager',
-                icon: 'smile',
-                component: './manager/userManager',
-                // authority: ['admin'],
-              }
-            ],
-          },
-          {
-            path: '/systemmanager',
-            name: 'manager',
-            icon: 'crown',
-            // component: './manager',
-            // authority: ['admin'],
-            routes: [
-              {
-                path: '/systemmanager/rolemanager',
-                name: 'role',
-                icon: 'smile',
-                component: './SystemManager/RoleManager',
-                // authority: ['admin'],
-              },
-              {
-                path: '/systemmanager/usermanager',
-                name: 'usermanager',
-                icon: 'smile',
-                component: './SystemManager/UserManager',
-                // authority: ['admin'],
-              }
-            ],
-          },
-          {
-            path: '/schoolmanager',
-            name: 'schoolmanager',
-            icon: 'crown',
-            // component: './manager',
-            // authority: ['admin'],
-            routes: [
-              {
-                path: '/schoolmanager/classmanager',
-                name: 'classmanager',
-                icon: 'smile',
-                component: './SchoolManager/ClassManager',
-                // authority: ['admin'],
-              },
-              {
-                path: '/schoolmanager/grademanager',
-                name: 'grademanager',
-                icon: 'smile',
-                component: './SchoolManager/GradeManager',
-                // authority: ['admin'],
-              }
-              ,
-              {
-                path: '/schoolmanager/studentmanager',
-                name: 'studentmanager',
-                icon: 'smile',
-                component: './SchoolManager/StudentManager',
-                // authority: ['admin'],
-              },
-              {
-                path: '/schoolmanager/teachermanager',
-                name: 'teachermanager',
-                icon: 'smile',
-                component: './SchoolManager/TeacherManager',
-                // authority: ['admin'],
-              },
-              {
-                path: '/schoolmanager/commentmanager',
-                name: 'commentmanager',
-                icon: 'smile',
-                component: './SchoolManager/CommentManager',
-                // authority: ['admin'],
-              },
-              {
-                path: '/schoolmanager/subjectmanager',
-                name: 'subjectmanager',
-                icon: 'smile',
-                component: './SchoolManager/SubjectManager',
-                // authority: ['admin'],
-              }
-            ],
-          },
-          // {
-          //   name: 'manager',
-          //   icon: 'smile',
-          //   path: '/home/emptypage',
-          //   component: './Home/EmptyPageTwo',
-          // },
-          // {
-          //   path: '/home',
-          //   name: 'home',
-          //   icon: 'crown', 
-          //   component: './Home',
-          //   authority: ['admin'],
-          //   routes: [
-          //     {
-          //       name: '空白页面',
-          //       icon: 'smile',
-          //       path: '/home/emptypage',
-          //       component: './Home',
-          //     },
-          //   ],
-          // },
-          {
-            component: './404',
-          },
-        // ],
-      // },
-      {
-        component: './404',
-      },
-    // ],
-  // },
-  {
-    component: './404',
-  },
-]
+// const menuData = [
+//           {
+//             path: '/',
+//             redirect: '/welcome',
+//           },
+//           {
+//             path: '/welcome',
+//             name: 'welcome',
+//             icon: 'smile',
+//             component: './Welcome',
+//           },
+//           {
+//             path: '/admin',
+//             name: 'admin',
+//             icon: 'crown',
+//             component: './Admin',
+//             routes: [
+//               {
+//                 path: '/admin/sub-page',
+//                 name: 'sub-page',
+//                 icon: 'smile',
+//                 component: './Welcome',
+//               },
+//             ],
+//           },
+//           {
+//             path: '/manager',
+//             name: 'manager',
+//             icon: 'crown',
+//             // hideInMenu: menuHasPermission('/manager/rolemanager'),
+//             routes: [
+//               {
+//                 path: '/manager/rolemanager',
+//                 name: 'role',
+//                 icon: 'smile',
+//                 hideInMenu: menuHasPermission('/manager/rolemanager'),
+//                 component: './manager/roleManager',
+//               },
+//               {
+//                 path: '/manager/usermanager',
+//                 name: 'usermanager',
+//                 icon: 'smile',
+//                 component: './manager/userManager',
+//               }
+//             ],
+//           },
+//           {
+//             path: '/systemmanager',
+//             name: 'manager',
+//             icon: 'crown',
+//             routes: [
+//               {
+//                 path: '/systemmanager/rolemanager',
+//                 name: 'role',
+//                 icon: 'smile',
+//                 component: './SystemManager/RoleManager',
+//               },
+//               {
+//                 path: '/systemmanager/usermanager',
+//                 name: 'usermanager',
+//                 icon: 'smile',
+//                 component: './SystemManager/UserManager',
+//               }
+//             ],
+//           },
+//           {
+//             path: '/schoolmanager',
+//             name: 'schoolmanager',
+//             icon: 'crown',
+//             routes: [
+//               {
+//                 path: '/schoolmanager/classmanager',
+//                 name: 'classmanager',
+//                 icon: 'smile',
+//                 component: './SchoolManager/ClassManager',
+//               },
+//               {
+//                 path: '/schoolmanager/grademanager',
+//                 name: 'grademanager',
+//                 icon: 'smile',
+//                 component: './SchoolManager/GradeManager',
+//               }
+//               ,
+//               {
+//                 path: '/schoolmanager/studentmanager',
+//                 name: 'studentmanager',
+//                 icon: 'smile',
+//                 component: './SchoolManager/StudentManager',
+//               },
+//               {
+//                 path: '/schoolmanager/teachermanager',
+//                 name: 'teachermanager',
+//                 icon: 'smile',
+//                 component: './SchoolManager/TeacherManager',
+//               },
+//               {
+//                 path: '/schoolmanager/commentmanager',
+//                 name: 'commentmanager',
+//                 icon: 'smile',
+//                 component: './SchoolManager/CommentManager',
+//               },
+//               {
+//                 path: '/schoolmanager/subjectmanager',
+//                 name: 'subjectmanager',
+//                 icon: 'smile',
+//                 component: './SchoolManager/SubjectManager',
+//               }
+//             ],
+//           },
+//           {
+//             component: './404',
+//           },
+//       {
+//         component: './404',
+//       },
+//   {
+//     component: './404',
+//   },
+// ]
 
   // useEffect(() => {
   //   // 这里是一个演示用法
@@ -316,7 +531,7 @@ const menuData = [
   /**
    * init variables
    */
-
+ 
   const handleMenuCollapse = payload => {
     if (dispatch) {
       dispatch({

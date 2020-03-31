@@ -137,17 +137,6 @@ export default {
   //   },
   // ],
   routes: [
-    // {
-    //   path: '/user',
-    //   component: '../layouts/UserLayout',
-    //   routes: [
-    //     {
-    //       name: 'login',
-    //       path: '/user/login',
-    //       component: './user/login',
-    //     },
-    //   ],
-    // },
     {
       path:'/login',
       name:'login',
@@ -174,51 +163,51 @@ export default {
               icon: 'smile',
               component: './Welcome',
             },
-            {
-              path: '/otherpage',
-              name: 'welcome',
-              icon: 'smile',
-              component: './OtherPage/index',
-            },
-            {
-              path: '/admin',
-              name: 'admin',
-              icon: 'crown',
-              component: './Admin',
-              authority: ['admin'],
-              routes: [
-                {
-                  path: '/admin/sub-page',
-                  name: 'sub-page',
-                  icon: 'smile',
-                  component: './Welcome',
-                  authority: ['admin'],
-                },
-              ],
-            },
-            {
-              path: '/manager',
-              name: 'manager',
-              icon: 'crown',
-              // component: './manager',
-              // authority: ['admin'],
-              routes: [
-                {
-                  path: '/manager/rolemanager',
-                  name: 'role',
-                  icon: 'smile',
-                  component: './manager/roleManager',
-                  // authority: ['admin'],
-                },
-                {
-                  path: '/manager/usermanager',
-                  name: 'usermanager',
-                  icon: 'smile',
-                  component: './manager/userManager',
-                  // authority: ['admin'],
-                }
-              ],
-            },
+            // {
+            //   path: '/otherpage',
+            //   name: 'welcome',
+            //   icon: 'smile',
+            //   component: './OtherPage/index',
+            // },
+            // {
+            //   path: '/admin',
+            //   name: 'admin',
+            //   icon: 'crown',
+            //   component: './Admin',
+            //   authority: ['admin'],
+            //   routes: [
+            //     {
+            //       path: '/admin/sub-page',
+            //       name: 'sub-page',
+            //       icon: 'smile',
+            //       component: './Welcome',
+            //       authority: ['admin'],
+            //     },
+            //   ],
+            // },
+            // {
+            //   path: '/manager',
+            //   name: 'manager',
+            //   icon: 'crown',
+            //   // component: './manager',
+            //   // authority: ['admin'],
+            //   routes: [
+            //     {
+            //       path: '/manager/rolemanager',
+            //       name: 'role',
+            //       icon: 'smile',
+            //       component: './manager/roleManager',
+            //       // authority: ['admin'],
+            //     },
+            //     {
+            //       path: '/manager/usermanager',
+            //       name: 'usermanager',
+            //       icon: 'smile',
+            //       component: './manager/userManager',
+            //       // authority: ['admin'],
+            //     }
+            //   ],
+            // },
             {
               path: '/systemmanager',
               name: 'manager',
@@ -294,27 +283,162 @@ export default {
                 }
               ],
             },
-            // {
-            //   name: 'manager',
-            //   icon: 'smile',
-            //   path: '/home/emptypage',
-            //   component: './Home/EmptyPageTwo',
-            // },
-            // {
-            //   path: '/home',
-            //   name: 'home',
-            //   icon: 'crown', 
-            //   component: './Home',
-            //   authority: ['admin'],
-            //   routes: [
-            //     {
-            //       name: '空白页面',
-            //       icon: 'smile',
-            //       path: '/home/emptypage',
-            //       component: './Home',
-            //     },
-            //   ],
-            // },
+            {
+              path: '/searchmanager',
+              name: 'searchmanager',
+              icon: 'crown',
+              // component: './manager',
+              // authority: ['admin'],
+              routes: [
+                {
+                  path: '/searchmanager/flowersearch',
+                  name: 'flowersearch',
+                  icon: 'smile',
+                  component: './SearchManager/FlowerSearch',
+                  // authority: ['admin'],
+                },
+                {
+                  path: '/searchmanager/classsearch',
+                  name: 'classsearch',
+                  icon: 'smile',
+                  component: './SearchManager/ClassSearch',
+                  // authority: ['admin'],
+                }
+                ,
+                {
+                  path: '/searchmanager/withdrawsearch',
+                  name: 'withdrawsearch',
+                  icon: 'smile',
+                  component: './SearchManager/WithdrawSearch',
+                  // authority: ['admin'],
+                },
+                {
+                  path: '/searchmanager/transfersearch',
+                  name: 'transfersearch',
+                  icon: 'smile',
+                  component: './SearchManager/TransferSearch',
+                  // authority: ['admin'],
+                },
+                {
+                  path: '/searchmanager/consumptionsearch',
+                  name: 'consumptionsearch',
+                  icon: 'smile',
+                  component: './SearchManager/ConsumptionSearch',
+                  // authority: ['admin'],
+                },
+                {
+                  path: '/searchmanager/studentsearch',
+                  name: 'studentQR',
+                  icon: 'smile',
+                  component: './SearchManager/StudentQR',
+                  // authority: ['admin'],
+                },
+                {
+                  path: '/searchmanager/teachersearch',
+                  name: 'teacherQR',
+                  icon: 'smile',
+                  component: './SearchManager/TeacherQR',
+                  // authority: ['admin'],
+                },
+                {
+                  path: '/searchmanager/checkbooksearch',
+                  name: 'checkbooksearch',
+                  icon: 'smile',
+                  component: './SearchManager/CheckbookSearch',
+                  // authority: ['admin'],
+                }
+              ],
+            },
+            {
+              path: '/QRmanager',
+              name: 'QRmanager',
+              icon: 'crown',
+              // component: './manager',
+              // authority: ['admin'],
+              routes: [
+                {
+                  path: '/QRmanager/QRCreate',
+                  name: 'QRCreate',
+                  icon: 'smile',
+                  component: './QRManager/QRCreate',
+                  // authority: ['admin'],
+                },
+                {
+                  path: '/QRmanager/QRDistribution',
+                  name: 'QRDistribution',
+                  icon: 'smile',
+                  component: './QRManager/QRDistribution',
+                  // authority: ['admin'],
+                }
+              ],
+            },
+            {
+              path: '/shopmanager',
+              name: 'shopmanager',
+              icon: 'crown',
+              // component: './manager',
+              // authority: ['admin'],
+              routes: [
+                {
+                  path: '/shopmanager/bankmanager',
+                  name: 'bankmanager',
+                  icon: 'smile',
+                  component: './ShopManager/BankManager',
+                  // authority: ['admin'],
+                },
+                {
+                  path: '/shopmanager/shoppermanager',
+                  name: 'shoppermanager',
+                  icon: 'smile',
+                  component: './ShopManager/ShopperManager',
+                  // authority: ['admin'],
+                },
+                {
+                  path: '/shopmanager/goodsmanager',
+                  name: 'goodsmanager',
+                  icon: 'smile',
+                  component: './ShopManager/GoodsManager',
+                  // authority: ['admin'],
+                }
+              ],
+            },
+            {
+              path: '/logmanager',
+              name: 'logmanager',
+              icon: 'crown',
+              // component: './manager',
+              // authority: ['admin'],
+              routes: [
+                {
+                  path: '/logmanager/backlog',
+                  name: 'backlog',
+                  icon: 'smile',
+                  component: './LogManager/BackLog',
+                  // authority: ['admin'],
+                },
+                {
+                  path: '/logmanager/banklog',
+                  name: 'banklog',
+                  icon: 'smile',
+                  component: './LogManager/BankLog',
+                  // authority: ['admin'],
+                },
+                {
+                  path: '/logmanager/shoplog',
+                  name: 'shoplog',
+                  icon: 'smile',
+                  component: './LogManager/ShopLog',
+                  // authority: ['admin'],
+                },
+                {
+                  path: '/logmanager/logsearch',
+                  name: 'logsearch',
+                  icon: 'smile',
+                  component: './LogManager/LogSearch',
+                  // authority: ['admin'],
+                }
+              ],
+            },
             {
               component: './404',
             },

@@ -44,11 +44,12 @@ class index extends Component {
     state = {
         visible: false,
         formModal: false,
-        prop:{
+        prop: {
             action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
             listType: 'picture',
             // defaultFileList: [...fileList],
-          }
+        },
+        addSubjectVisible:false
     };
 
     // showModal = () => {
@@ -83,12 +84,74 @@ class index extends Component {
         });
     };
 
+    // 增加学科
+    addSubject = () => {
+        this.setState({addSubjectVisible: true})
+    }
+
+    // 关闭增加学科对话框
+    cancelAdd= () => {
+        this.setState({addSubjectVisible: false})
+    }
+
+    // 点击增加学科对话框按钮
+    addOk = () => {
+        console.log(11111111)
+    }
+
 
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
             <div className='indexBox'>
-                <Button type='primary'>新增</Button>
+                <Button type='primary' onClick={this.addSubject}>新增</Button>
+                <Modal
+                    title="编辑"
+                    visible={this.state.addSubjectVisible}
+                    onOk={this.addOk}
+                    onCancel={this.cancelAdd}
+                >
+                    <Form>
+                        <Form.Item {...formItemLayout} label="序号" >
+                            {getFieldDecorator('order', {
+                                rules: [
+                                    {
+                                        required: true,
+                                        // message: '请输入您的账号',
+                                    },
+                                ],
+                            })(<Input placeholder="请输入您的账户" />)}
+                        </Form.Item>
+                        <Form.Item {...formItemLayout} label="学科名称" >
+                            {getFieldDecorator('subjectName', {
+                                rules: [
+                                    {
+                                        required: true,
+                                        // message: '请输入您的账号',
+                                    },
+                                ],
+                            })(<Input placeholder="请输入您的账户" />)}
+                        </Form.Item>
+                        <Form.Item {...formItemLayout} label="学科名称" >
+                            {getFieldDecorator('subjectIcon', {
+                                // rules: [
+                                //     {
+                                //         required: true,
+                                //         // message: '请输入您的账号',
+                                //     },
+                                // ],
+                            })(
+                                <div>
+                                    <Upload {...this.state.prop}>
+                                        <Button>
+                                            <UploadOutlined /> Upload
+                                                </Button>
+                                    </Upload>
+                                </div>
+                            )}
+                        </Form.Item>
+                    </Form>
+                </Modal>
                 <Table
                     columns={this.props.subjectManager.columns}
                     pagination={{ defaultPageSize: 2 }}
